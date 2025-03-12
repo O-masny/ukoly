@@ -1,67 +1,42 @@
-1. Co je JavaScript?
-JavaScript je programovací jazyk, který se používá k oživení webových stránek. Umožňuje vytvářet interaktivní prvky, jako jsou tlačítka, formuláře, animace a další dynamické prvky.
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-2. Jak přidat JavaScript na web?
-JavaScript lze přidat třemi způsoby:
 
-Interní skript – kód se píše přímo do HTML souboru uvnitř značky <script>.
+gsap.to("#box", { x: 200, duration: 1 });
 
-Externí soubor – JavaScript se uloží do samostatného .js souboru a připojí k HTML pomocí <script src="soubor.js"></script>.
 
-Inline skript – 
-JavaScript je napsán přímo do HTML atributu, například onclick="alert('Ahoj!')".
+let tl = gsap.timeline();
+tl.to("#box", { x: 200, duration: 1 })
+  .to("#box", { y: 100, duration: 1 })
+  .to("#box", { rotation: 360, duration: 1 });
 
-3. Základní příkaz: Výpis do konzole
-Použijte console.log('Ahoj světe!'); k výpisu textu do konzole prohlížeče.
+CSS
+ body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .item {
+            opacity: 0;
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 18px;
+        }
 
-4. Proměnné v JavaScriptu
-V JavaScriptu existují tři způsoby, jak deklarovat proměnné:
-
-var – starší způsob, který se dnes již méně používá.
-
-let – moderní způsob deklarace proměnných.
-
-const – používá se pro hodnoty, které se nemění.
-
-Příklad:
-
-let jmeno = 'Petr';
-const vek = 25;
-console.log(jmeno, vek);
-
-5. Základní operace
-JavaScript podporuje matematické operace:
-
-let a = 10;
-let b = 5;
-console.log(a + b); // 15
-console.log(a - b); // 5
-console.log(a * b); // 50
-console.log(a / b); // 2
-
-6. Funkce
-Funkce umožňují opakovaně používat kód.
-
-function pozdrav(jmeno) {
-    return 'Ahoj, ' + jmeno + '!';
-}
-console.log(pozdrav('Pavel'));
-
-7. Události v JavaScriptu
-JavaScript umožňuje reagovat na akce uživatele, například kliknutí na tlačítko.
-
-<button onclick="alert('Klikl jsi na tlačítko!')">Klikni na mě</button>
-
-Úkoly:
-
-Otevřete si konzoli prohlížeče a zkuste spustit příkaz console.log('Hello World!').
-
-Vytvořte proměnné jmeno a vek a vypište je do konzole.
-
-Napište funkci, která vypočítá součet dvou čísel a zobrazí výsledek.
-
-Přidejte tlačítko na webovou stránku a pomocí JavaScriptu zajistěte, že po kliknutí zobrazí zprávu.
-
-Bonus:
-
-Vytvořte jednoduchý skript, který po načtení stránky zobrazí uživateli uvítací zprávu pomocí alert().
+        
+ <script>
+        gsap.fromTo(".item", 
+            { opacity: 0, y: 50 },  // Výchozí stav (prvky neviditelné a posunuté dolů)
+            { opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power2.out" } // Animace
+        );
+    </script>
